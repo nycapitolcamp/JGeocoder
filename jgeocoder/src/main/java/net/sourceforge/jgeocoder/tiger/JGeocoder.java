@@ -48,8 +48,8 @@ public class JGeocoder{
 
   private TigerLineHit getTigerLineHitByZip(Map<AddressComponent, String> normalizedAddr, String zip) throws TigerQueryFailedException, DatabaseException{
 	  
-	  //I removed the "!" from before _zipDao (Vincent Hueber)
-      if(zip == null || _zipDao.fillInCSByZip(normalizedAddr, zip)){
+	  // this causes null pointer sometimes
+      if(zip == null || !_zipDao.fillInCSByZip(normalizedAddr, zip)){
           return null;
       }
       normalizedAddr.put(ZIP, zip);
