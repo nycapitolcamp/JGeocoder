@@ -18,8 +18,10 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 class BobbysTest{
   public static void main(String[] args) throws ClassNotFoundException {
     JGeocoderConfig config = new JGeocoderConfig();
-    config.setJgeocoderDataHome("/home/graylin/projects/jgeocoder/jgeocoder/src/data");
-
+    
+    //changed the data folder to be sourced at runtime
+    config.setJgeocoderDataHome(args[4]);
+    
     MysqlDataSource db = new MysqlDataSource();
     for(String arg : args) {
         System.out.println(arg);
